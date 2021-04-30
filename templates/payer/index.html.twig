@@ -1,0 +1,38 @@
+{% extends 'back.html.twig' %}
+{% block body %}
+    <div id="inSlider" class="carousel slide" data-ride="carousel" >
+        <ol class="carousel-indicators">
+            <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#inSlider" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="container">
+
+                    <div class="carousel-image wow zoomIn">
+                        <img alt="image"  src=" /theme/img/landing/formation2.jpg"/>
+                    </div>
+                </div>
+                <!-- Set background for slide in css -->
+                <div class="header-back one"></div>
+
+            </div>
+
+        </div>
+
+        <section>
+            <div class="product"  >
+
+                <div class="description">
+                    <h2>Le prix de l'inscription : {{ formation.prix}} dt </h2>
+                    <h3>Le domaine de la formation : {{ formation.domaine }}</h3>
+                    <h3>Le nom de la formation : {{ formation.nomformation }}</h3>
+                    <button class="btn btn-info  " type="button" onclick="location.href='{{path('checkout') }}';"><i class="fa fa-paste"></i> Inscrire  </button>
+
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+
