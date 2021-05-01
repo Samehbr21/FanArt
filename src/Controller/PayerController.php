@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Formation;
 use App\Entity\PropertySearch;
+use App\Entity\Salle;
 use App\Form\PropertySearchType;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -84,7 +85,25 @@ class PayerController extends AbstractController
     public function error(){
         return $this->render('payer/Erreur.html.twig');
 
+    }
 
+    /**
+     * @Route("/formation/formationOrderDESC" , name="formationOrderDESC")
+     */
+    public function FormationOrderDESC(){
+        $repository = $this->getDoctrine()->getRepository(formation::class);
+        $form = $repository->trierdomaineDESC();
+        return $this->render('formation/Listeformation.html.twig', ['formation' => $form,]);
+    }
 
+    /**
+     * @Route("/formation/stat", name="adminstat")
+     */
+    public function adminstat(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Salle::Class);
+        $salle = $repository->findAll();
+        $repository = $this->getDoctrine()->getRepository(Formation::Class);
+        $formation = $repository->findAll();
     }
 }
